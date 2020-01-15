@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
-import { Header, Wrapper } from '../../index'
-import styles from './About.styles'
+import { Wrapper } from '../../index'
+import { Title, AboutText, Conduct } from '../../Typography'
 
 const About = () => {
   const EVENT_INFORMATION = gql`
@@ -25,20 +25,32 @@ const About = () => {
     setToggle(toggle === false)
   }
 
-  return loading ? (
-    <Header>loading</Header>
-  ) : error ? (
-    <Header>error</Header>
-  ) : (
+  return (
     <Wrapper>
-      {data.allConducts.map(({ id, title, description }) => (
-        <View key={id}>
-          <TouchableOpacity onPress={triggerToggle}>
-            <Text style={styles.conduct}>{title}</Text>
-          </TouchableOpacity>
-          {toggle ? <Text>{description}</Text> : null}
-        </View>
-      ))}
+      <AboutText>
+        R10 is a conference that focuses on just about any topic related to dev.
+      </AboutText>
+      <Title>Date Venue</Title>
+      <AboutText>
+        The R10 conference will take place on Tuesday, June, 2017 in Vancouver,
+        BC.
+      </AboutText>
+      {loading ? (
+        <Title>loading</Title>
+      ) : error ? (
+        <Title>error</Title>
+      ) : (
+        <Wrapper>
+          {data.allConducts.map(({ id, title, description }) => (
+            <View key={id}>
+              <TouchableOpacity onPress={triggerToggle}>
+                <Conduct>{title}</Conduct>
+              </TouchableOpacity>
+              {toggle ? <AboutText>{description}</AboutText> : null}
+            </View>
+          ))}
+        </Wrapper>
+      )}
     </Wrapper>
   )
 }
