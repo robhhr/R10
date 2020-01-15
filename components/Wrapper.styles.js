@@ -4,8 +4,9 @@ const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
   },
-  scrollView: {
-    backgroundColor: 'lightblue',
+  wrapperContainer: {
+    marginVertical: 10,
+    marginHorizontal: 20,
   },
 })
 

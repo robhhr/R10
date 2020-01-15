@@ -5,8 +5,8 @@ import styles from './Wrapper.styles'
 const Wrapper = ({ children }) => {
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <ScrollView style={styles.scrollView}>
-        <View>{children}</View>
+      <ScrollView>
+        <View style={styles.wrapperContainer}>{children}</View>
       </ScrollView>
     </SafeAreaView>
   )

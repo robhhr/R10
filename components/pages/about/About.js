@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, TouchableOpacity } from 'react-native'
+import { View, TouchableOpacity, Text } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { Wrapper } from '../../index'
@@ -32,25 +32,30 @@ const About = () => {
       </AboutText>
       <Title>Date Venue</Title>
       <AboutText>
-        The R10 conference will take place on Tuesday, June, 2017 in Vancouver,
+        The R10 conference will take place on Tuesday, June, 2020 in Vancouver,
         BC.
       </AboutText>
+      <Title>Code of Conduct</Title>
       {loading ? (
         <Title>loading</Title>
       ) : error ? (
         <Title>error</Title>
       ) : (
-        <Wrapper>
+        <View>
           {data.allConducts.map(({ id, title, description }) => (
             <View key={id}>
               <TouchableOpacity onPress={triggerToggle}>
-                <Conduct>{title}</Conduct>
+                <Conduct>
+                  {toggle ? '- ' : '+ '}
+                  {title}
+                </Conduct>
               </TouchableOpacity>
               {toggle ? <AboutText>{description}</AboutText> : null}
             </View>
           ))}
-        </Wrapper>
+        </View>
       )}
+      <AboutText>RED Academy 2020</AboutText>
     </Wrapper>
   )
 }

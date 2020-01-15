@@ -5,10 +5,15 @@ const styles = StyleSheet.create({
     fontSize: 28,
   },
   aboutText: {
-    fontSize: 15,
+    fontSize: 20,
+    marginVertical: 25,
+    fontWeight: '300',
   },
   conduct: {
+    fontSize: 20,
+    fontWeight: '600',
     color: '#9963ea',
+    marginVertical: 15,
   },
 })
 
