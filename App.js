@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import About from './js/pages/about/About';
+import {About} from './components/pages/index';
 
 const App = () => {
   return (
