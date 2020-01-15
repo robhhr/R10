@@ -1,3 +1,3 @@
-import About from './about/index';
+import About from './about/index'
 
-export {About};
+export { About }

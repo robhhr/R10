@@ -1,68 +1,46 @@
-import React, {useState} from 'react'
-import {
-   View,
-   Text,
-   StyleSheet,
-   SafeAreaView,
-   ScrollView,
-   TouchableOpacity,
-} from 'react-native'
-import {gql} from 'apollo-boost'
-import {useQuery} from '@apollo/react-hooks'
+import React, { useState } from 'react'
+import { View, Text, TouchableOpacity } from 'react-native'
+import { gql } from 'apollo-boost'
+import { useQuery } from '@apollo/react-hooks'
+import { Header, Wrapper } from '../../index'
+import styles from './About.styles'
 
 const About = () => {
-   const EVENT_INFORMATION = gql`
-      {
-         allConducts {
-            id
-            description
-            title
-            order
-         }
+  const EVENT_INFORMATION = gql`
+    {
+      allConducts {
+        id
+        description
+        title
+        order
       }
-   `
+    }
+  `
 
-   const {loading, error, data} = useQuery(EVENT_INFORMATION)
+  const { loading, error, data } = useQuery(EVENT_INFORMATION)
 
-   const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false)
 
-   const triggerToggle = () => {
-      setToggle(toggle === false)
-   }
+  const triggerToggle = () => {
+    setToggle(toggle === false)
+  }
 
-   return loading ? (
-      <SafeAreaView style={styles.container}>
-         <Text>loading</Text>
-      </SafeAreaView>
-   ) : error ? (
-      <SafeAreaView style={styles.container}>
-         <Text>error</Text>
-      </SafeAreaView>
-   ) : (
-      <SafeAreaView style={styles.container}>
-         <ScrollView style={styles.scrollView}>
-            <View>
-               {data.allConducts.map(({id, title, description}) => (
-                  <View key={id}>
-                     <TouchableOpacity onPress={triggerToggle}>
-                        <Text>{title}</Text>
-                     </TouchableOpacity>
-                     {toggle ? <Text>{description}</Text> : null}
-                  </View>
-               ))}
-            </View>
-         </ScrollView>
-      </SafeAreaView>
-   )
+  return loading ? (
+    <Header>loading</Header>
+  ) : error ? (
+    <Header>error</Header>
+  ) : (
+    <Wrapper>
+      {data.allConducts.map(({ id, title, description }) => (
+        <View key={id}>
+          <TouchableOpacity onPress={triggerToggle}>
+            <Text style={styles.conduct}>{title}</Text>
+          </TouchableOpacity>
+          {toggle ? <Text>{description}</Text> : null}
+        </View>
+      ))}
+    </Wrapper>
+  )
 }
-
-const styles = StyleSheet.create({
-   container: {
-      flex: 1,
-   },
-   scrollView: {
-      backgroundColor: 'pink',
-   },
-})
 
 export default About
