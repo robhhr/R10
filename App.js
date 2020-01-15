@@ -1,12 +1,13 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {About} from './components/pages/index';
+import ApolloWrapper from './apollo/Apollo';
 
 const App = () => {
   return (
-    <>
+    <ApolloWrapper>
       <About />
-    </>
+    </ApolloWrapper>
   );
 };
 
