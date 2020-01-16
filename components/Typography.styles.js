@@ -4,10 +4,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
   },
-  pageTitle: {
-    fontSize: 28,
-    color: 'white',
-  },
   aboutText: {
     fontSize: 20,
     marginVertical: 25,

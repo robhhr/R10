@@ -6,7 +6,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FF6666',
-    height: 120,
+    height: 125,
+  },
+  pageTitle: {
+    fontSize: 28,
+    color: 'white',
+    paddingVertical: 80,
   },
 })
 
