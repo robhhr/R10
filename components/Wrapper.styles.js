@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   wrapperContainer: {
-    marginVertical: 10,
     marginHorizontal: 20,
   },
 })

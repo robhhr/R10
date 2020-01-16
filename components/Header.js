@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import styles from './Header.styles'
 
 const Header = ({ children }) => {

@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
   pageTitle: {
     fontSize: 28,
     color: 'white',
-    paddingVertical: 120,
   },
   aboutText: {
     fontSize: 20,
