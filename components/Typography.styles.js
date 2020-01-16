@@ -4,6 +4,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
   },
+  pageTitle: {
+    fontSize: 28,
+    color: 'white',
+    paddingVertical: 120,
+  },
   aboutText: {
     fontSize: 20,
     marginVertical: 25,

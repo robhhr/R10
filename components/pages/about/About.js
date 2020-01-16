@@ -3,7 +3,7 @@ import { View, TouchableOpacity, Text } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { Header, Wrapper } from '../../index'
-import { Title, AboutText, Conduct } from '../../Typography'
+import { Title, PageTitle, AboutText, Conduct } from '../../Typography'
 
 const About = () => {
   const EVENT_INFORMATION = gql`
@@ -27,7 +27,9 @@ const About = () => {
 
   return (
     <>
-      <Header />
+      <Header>
+        <PageTitle>About</PageTitle>
+      </Header>
       <Wrapper>
         <AboutText>
           R10 is a conference that focuses on just about any topic related to
