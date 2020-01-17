@@ -65,11 +65,10 @@ const BottomNavigation = createBottomTabNavigator(
       },
     }),
     tabBarOptions: {
-      activeBackgroundColor: 'black',
-      inactiveBackgroundColor: 'black',
       activeTintColor: 'white',
       inactiveTintColor: '#999999',
-      style: { height: 65 },
+      style: { height: 65, backgroundColor: 'black' },
+      labelStyle: { fontSize: 10 },
     },
   },
 )
