@@ -18,4 +18,8 @@ const Conduct = ({ children }) => {
   return <Text style={styles.conduct}>{children}</Text>
 }
 
-export { Title, PageTitle, AboutText, Conduct }
+const REDFooter = ({ children }) => {
+  return <Text style={styles.redFooter}>{children}</Text>
+}
+
+export { Title, PageTitle, AboutText, Conduct, REDFooter }

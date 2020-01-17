@@ -20,6 +20,11 @@ const styles = StyleSheet.create({
     color: '#9963ea',
     marginVertical: 15,
   },
+  redFooter: {
+    fontSize: 20,
+    marginVertical: 25,
+    fontWeight: '300',
+  },
 })
 
 export default styles
