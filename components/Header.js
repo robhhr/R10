@@ -1,13 +1,9 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import styles from './Header.styles'
 
 const Header = ({ children }) => {
-  return (
-    <View style={styles.header}>
-      <Text style={styles.pageTitle}>{children}</Text>
-    </View>
-  )
+  return <View style={styles.header}>{children}</View>
 }
 
 export default Header

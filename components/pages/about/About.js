@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { View, TouchableOpacity, ScrollView } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
-import { Header, Wrapper } from '../../index'
-import { Title, AboutText, Conduct } from '../../Typography'
+import { Header, Logo, Wrapper } from '../../index'
+import { Title, AboutText, Conduct, PageTitle } from '../../Typography'
 
 const Collapsible = ({ title, children, ...props }) => {
   const [toggle, setToggle] = useState(false)
@@ -41,8 +41,11 @@ const About = () => {
 
   return (
     <ScrollView>
-      <Header>About</Header>
+      <Header>
+        <PageTitle>About</PageTitle>
+      </Header>
       <Wrapper>
+        <Logo />
         <AboutText>
           R10 is a conference that focuses on just about any topic related to
           dev.
