@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
-    // minHeight: '100%',
+    backgroundColor: 'white',
   },
   scroll: {
     minHeight: '100%',
