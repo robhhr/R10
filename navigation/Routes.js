@@ -30,20 +30,35 @@ const BottomNavigation = createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
+      tabBarIcon: () => {
         const { routeName } = navigation.state
-        if (routeName === 'Home') {
+
+        if (routeName === 'Schedule') {
           return (
             <Image
               source={require('../assets/images/R2D2.png')}
-              style={{ width: 20, height: 20 }}
+              style={{ width: 30, height: 30 }}
             />
           )
-        } else {
+        } else if (routeName === 'Map') {
           return (
             <Image
-              source={require('../assets/images/R2D2.png')}
-              style={{ width: 20, height: 20 }}
+              source={require('../assets/images/C3P0.png')}
+              style={{ width: 30, height: 30 }}
+            />
+          )
+        } else if (routeName === 'Favorites') {
+          return (
+            <Image
+              source={require('../assets/images/Rebel.png')}
+              style={{ width: 30, height: 30 }}
+            />
+          )
+        } else if (routeName === 'About') {
+          return (
+            <Image
+              source={require('../assets/images/Yoda.png')}
+              style={{ width: 30, height: 30 }}
             />
           )
         }
@@ -54,6 +69,7 @@ const BottomNavigation = createBottomTabNavigator(
       inactiveBackgroundColor: 'black',
       activeTintColor: 'white',
       inactiveTintColor: '#999999',
+      style: { height: 65 },
     },
   },
 )
