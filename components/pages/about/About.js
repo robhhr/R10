@@ -32,7 +32,7 @@ const Collapsible = ({ title, children, ...props }) => {
 }
 
 const About = () => {
-  const EVENT_INFORMATION = gql`
+  const CONDUCT_INFORMATION = gql`
     {
       allConducts {
         id
@@ -43,7 +43,7 @@ const About = () => {
     }
   `
 
-  const { loading, error, data } = useQuery(EVENT_INFORMATION)
+  const { loading, error, data } = useQuery(CONDUCT_INFORMATION)
 
   return (
     <Wrapper>

@@ -15,7 +15,7 @@ const AboutRoute = createStackNavigator({
 })
 
 const FavRoute = createStackNavigator({
-  Favorites: Favorites,
+  Faves: Favorites,
 })
 
 const MapRoute = createStackNavigator({
@@ -26,7 +26,7 @@ const BottomNavigation = createBottomTabNavigator(
   {
     Schedule: HomeRoute,
     Map: MapRoute,
-    Favorites: FavRoute,
+    Faves: FavRoute,
     About: AboutRoute,
   },
   {
@@ -38,7 +38,7 @@ const BottomNavigation = createBottomTabNavigator(
           return <Icon name="ios-calendar" color={tintColor} size={25} />
         } else if (routeName === 'Map') {
           return <Icon name="ios-map" color={tintColor} size={25} />
-        } else if (routeName === 'Favorites') {
+        } else if (routeName === 'Faves') {
           return <Icon name="ios-heart" color={tintColor} size={25} />
         } else if (routeName === 'About') {
           return (
