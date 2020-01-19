@@ -3,13 +3,7 @@ import { View, Text, SafeAreaView, SectionList } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { Header, Logo, Wrapper } from '../../index'
-import {
-  Title,
-  AboutText,
-  Conduct,
-  PageTitle,
-  REDFooter,
-} from '../../Typography'
+import { Title } from '../../Typography'
 import { ScrollView } from 'react-native-gesture-handler'
 
 const Conference = () => {
@@ -26,14 +20,14 @@ const Conference = () => {
 
   const reduceSessionsToHeaders = (headers, session) => {
     const sectionIndex = headers.findIndex(
-      ({ time }) => time === session.startTime,
+      ({ title }) => title === session.startTime,
     )
 
     if (sectionIndex === -1)
       return [
         ...headers,
         {
-          time: session.startTime,
+          title: session.startTime,
           data: [session],
         },
       ]
@@ -45,7 +39,7 @@ const Conference = () => {
 
   const { loading, error, data } = useQuery(EVENT_INFORMATION)
   return (
-    <ScrollView>
+    <View>
       {loading ? (
         <Title>loading</Title>
       ) : error ? (
@@ -69,19 +63,23 @@ const Conference = () => {
                 </Text>
               </View>
             )}
-            renderSectionHeader={({ section: { time } }) => <Text>{time}</Text>}
+            renderSectionHeader={({ section: { title } }) => (
+              <Text>{title}</Text>
+            )}
           />
         </View>
       )}
-    </ScrollView>
+    </View>
   )
 }
 
 const Schedule = () => {
   return (
-    <ScrollView>
-      <Conference />
-    </ScrollView>
+    <SafeAreaView>
+      <ScrollView>
+        <Conference />
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 

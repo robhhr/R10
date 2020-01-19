@@ -47,7 +47,6 @@ const About = () => {
 
   return (
     <Wrapper>
-      {/* <ScrollView> */}
       <Logo />
       <AboutText>
         R10 is a conference that focuses on just about any topic related to dev.
@@ -72,7 +71,6 @@ const About = () => {
         </View>
       )}
       <REDFooter>RED Academy 2020</REDFooter>
-      {/* </ScrollView> */}
     </Wrapper>
   )
 }
