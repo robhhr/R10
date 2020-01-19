@@ -2,9 +2,9 @@ import React from 'react'
 import { View, Text, SafeAreaView, SectionList } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
-import { Header, Logo, Wrapper } from '../../index'
 import { Title } from '../../Typography'
 import { ScrollView } from 'react-native-gesture-handler'
+import styles from './Schedule.styles'
 
 const Conference = () => {
   const EVENT_INFORMATION = gql`
@@ -48,23 +48,20 @@ const Conference = () => {
         <View>
           <SectionList
             sections={data.allSessions.reduce(reduceSessionsToHeaders, [])}
+            style={styles.sessions}
             keyExtractor={({ id }) => id}
             renderItem={({ item: { id, title, location } }, i) => (
-              <View>
-                <Text
-                  key={id}
-                  title={title}
-                  style={{
-                    color: 'black',
-                    backgroundColor: 'grey',
-                    borderWidth: 2,
-                  }}>
-                  {title} {location}
+              <View style={styles.sessionContainer}>
+                <Text key={id} title={title} style={styles.individualSession}>
+                  {title}
                 </Text>
+                <Text style={styles.location}>{location}</Text>
               </View>
             )}
             renderSectionHeader={({ section: { title } }) => (
-              <Text>{title}</Text>
+              <View style={styles.time}>
+                <Text style={styles.sessionTime}>{title}</Text>
+              </View>
             )}
           />
         </View>
