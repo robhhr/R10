@@ -3,6 +3,7 @@ import { View, Text, SafeAreaView, SectionList } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { Title } from '../../Typography'
+import { FavoriteButton } from '../../index'
 import { ScrollView } from 'react-native-gesture-handler'
 import styles from './Schedule.styles'
 
@@ -56,6 +57,8 @@ const Conference = () => {
                   {title}
                 </Text>
                 <Text style={styles.location}>{location}</Text>
+                <Text style={styles.location}>blop blop blop</Text>
+                {/* <FavoriteButton id={id} /> */}
               </View>
             )}
             renderSectionHeader={({ section: { title } }) => (
