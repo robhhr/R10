@@ -21,6 +21,13 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginBottom: 5,
   },
+  favoriteContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginRight: 15,
+    alignItems: 'baseline',
+  },
   location: {
     backgroundColor: 'white',
     color: '#999999',

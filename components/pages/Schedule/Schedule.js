@@ -56,9 +56,10 @@ const Conference = () => {
                 <Text key={id} title={title} style={styles.individualSession}>
                   {title}
                 </Text>
-                <Text style={styles.location}>{location}</Text>
-                <Text style={styles.location}>blop blop blop</Text>
-                {/* <FavoriteButton id={id} /> */}
+                <View style={styles.favoriteContainer}>
+                  <Text style={styles.location}>{location}</Text>
+                  <FavoriteButton id={id} />
+                </View>
               </View>
             )}
             renderSectionHeader={({ section: { title } }) => (
