@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
-const FavoritesContext = createContext()
+export default FavoritesContext = createContext()
 
 const FavoritesContextProvider = () => {
   const [fav, setFav] = useState([])
