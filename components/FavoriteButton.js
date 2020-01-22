@@ -1,18 +1,23 @@
 import React, { useContext } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
 import { FavoritesContext } from '../context/favorites'
-import { View } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 
 const FavoriteButton = ({ id, ...props }) => {
   const { favorites, addFavs, removeFavs } = useContext(FavoritesContext)
-  // console.log(favorites)
+
   return (
-    <View>
+    <TouchableOpacity
+      onPress={() =>
+        favorites && favorites.includes(id) ? removeFavs(id) : addFavs(id)
+      }>
       <Icon
-        name={favorites.includes(id) ? 'ios-heart' : 'ios-heart-empty'}
+        name={
+          favorites && favorites.includes(id) ? 'ios-heart' : 'ios-heart-empty'
+        }
         size={20}
       />
-    </View>
+    </TouchableOpacity>
   )
 }
 
