@@ -4,10 +4,10 @@ import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { Title } from '../../Typography'
 import { FavoriteButton } from '../../index'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import styles from './Schedule.styles'
 
-const Conference = ({ navigation }) => {
+const Conference = ({ navigation, ...props }) => {
   const EVENT_INFORMATION = gql`
     {
       allSessions {
@@ -39,8 +39,9 @@ const Conference = ({ navigation }) => {
   }
 
   const { loading, error, data } = useQuery(EVENT_INFORMATION)
+
   return (
-    <View>
+    <>
       {loading ? (
         <Title>loading</Title>
       ) : error ? (
@@ -51,12 +52,14 @@ const Conference = ({ navigation }) => {
             sections={data.allSessions.reduce(reduceSessionsToHeaders, [])}
             style={styles.sessions}
             keyExtractor={({ id }) => id}
-            // onPress={() => navigation.push('Session')}
             renderItem={({ item: { id, title, location } }, i) => (
               <View style={styles.sessionContainer}>
-                <Text key={id} title={title} style={styles.individualSession}>
-                  {title}
-                </Text>
+                <TouchableOpacity
+                  onPress={() => navigation.push('Session', { id })}>
+                  <Text key={id} title={title} style={styles.individualSession}>
+                    {title}
+                  </Text>
+                </TouchableOpacity>
                 <View style={styles.favoriteContainer}>
                   <Text style={styles.location}>{location}</Text>
                   <FavoriteButton id={id} />
@@ -71,11 +74,11 @@ const Conference = ({ navigation }) => {
           />
         </View>
       )}
-    </View>
+    </>
   )
 }
 
-const Schedule = () => {
+const Schedule = ({ navigation }) => {
   return (
     <SafeAreaView>
       <ScrollView>

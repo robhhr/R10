@@ -3,11 +3,12 @@ import { Image } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { About, Schedule, Favorites, Map } from '../components/pages'
+import { About, Schedule, Favorites, Map, Session } from '../components/pages'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const HomeRoute = createStackNavigator({
   Home: Schedule,
+  Session: Session,
 })
 
 const AboutRoute = createStackNavigator({
@@ -22,12 +23,17 @@ const MapRoute = createStackNavigator({
   Map: Map,
 })
 
+const SessionRoute = createStackNavigator({
+  Session: Session,
+})
+
 const BottomNavigation = createBottomTabNavigator(
   {
     Schedule: HomeRoute,
     Map: MapRoute,
     Faves: FavRoute,
     About: AboutRoute,
+    Session: SessionRoute,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
