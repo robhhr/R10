@@ -6,9 +6,9 @@ import FavoritesContextProvider from '../context/favorites'
 const App = () => {
   return (
     <ApolloWrapper>
-      {/* <FavoritesContextProvider> */}
-      <Routes />
-      {/* </FavoritesContextProvider> */}
+      <FavoritesContextProvider>
+        <Routes />
+      </FavoritesContextProvider>
     </ApolloWrapper>
   )
 }

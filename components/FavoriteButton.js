@@ -1,20 +1,17 @@
 import React, { useContext } from 'react'
 import Icon from 'react-native-vector-icons/Ionicons'
-import FavoritesContext from '../context/favorites'
+import { FavoritesContext } from '../context/favorites'
 import { View } from 'react-native'
 
 const FavoriteButton = ({ id, ...props }) => {
-  // const { favorites, storeFavorites, deleteFavorites } = useContext(
-  //   FavoritesContext,
-  // )
-
+  const { favorites, addFavs, removeFavs } = useContext(FavoritesContext)
+  // console.log(favorites)
   return (
-    <View
-    // onPress={() =>
-    //   favorites.includes(id) ? deleteFavorites(id) : storeFavorites(id)
-    // }
-    >
-      <Icon name="ios-heart-empty" size={18} />
+    <View>
+      <Icon
+        name={favorites.includes(id) ? 'ios-heart' : 'ios-heart-empty'}
+        size={20}
+      />
     </View>
   )
 }

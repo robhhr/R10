@@ -1,81 +1,50 @@
 import React, { createContext, useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-community/async-storage'
 
-const storeFavorites = async id => {
-  try {
-    await AsyncStorage.setItem(`${id}`, JSON.stringify({ id: id }))
-  } catch (e) {
-    console.error('store bloop')
-  }
-}
+export const FavoritesContext = createContext()
 
-const deleteFavorites = async id => {
-  try {
-    AsyncStorage.removeItem(`${id}`)
-  } catch (e) {
-    console.error('delete bloop')
-  }
-}
-
-const getFavorites = async () => {
-  try {
-    const keys = await AsyncStorage.getAllKeys()
-    const favorite = await AsyncStorage.multiGet(keys)
-    return favorite
-    // return JSON.parse(favorites)
-  } catch (e) {
-    console.error('read blop')
-  }
-}
-
-const FavoritesContext = createContext()
-
-const FavoritesContextProvider = ({children, ...props}) => {
+const FavoritesContextProvider = ({ children, ...props }) => {
   const [favorites, setFavorites] = useState([])
 
-  const getAllIds = async () => {
+  const getFavorites = async () => {
     try {
-      const selectedFavorites = await getFavorites()
-      favorites = selectedFavorites.map(i => i[0])
-      setFavorites({
-        favorites,
-      })
-    } catch (error) {
-      console.error('getAllFavorites bloop')
+      const res = await AsyncStorage.getItem('favs')
+      setFavorites(JSON.parse(res))
+    } catch (e) {
+      console.error('read blop')
     }
   }
 
-  const addFavs = async (favId) => {
+  const addFavs = async id => {
     try {
-      const newFavorite = await storeFavorites(favId)
-      setId({
-        favorites: [...favorites, newFavorite]
+      const newFavorite = await AsyncStorage.setItem(id)
+      setFavorites({
+        favorites: [...favorites, newFavorite],
       })
-      getAllIds()
+      getFavorites()
     } catch (e) {
       console.error('add bloop')
     }
   }
 
-  const removeFavs = async (favId) => {
+  const removeFavs = async id => {
     try {
-      await deleteFavorites(favId)
-      getAllIds()
+      await AsyncStorage.removeItem(id)
+      getFavorites()
     } catch (e) {
       console.error('remove bloop')
     }
   }
 
   useEffect(() => {
-    getAllIds()
+    getFavorites()
   }, [])
 
   return (
-    <FavoritesContext.Provider value={{favorites, addFavs, removeFavs}}>
+    <FavoritesContext.Provider value={{ favorites, addFavs, removeFavs }}>
       {children}
     </FavoritesContext.Provider>
   )
 }
 
-export {FavoritesContext}
 export default FavoritesContextProvider

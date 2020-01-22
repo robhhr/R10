@@ -7,7 +7,7 @@ import { FavoriteButton } from '../../index'
 import { ScrollView } from 'react-native-gesture-handler'
 import styles from './Schedule.styles'
 
-const Conference = () => {
+const Conference = ({ navigation }) => {
   const EVENT_INFORMATION = gql`
     {
       allSessions {
@@ -51,6 +51,7 @@ const Conference = () => {
             sections={data.allSessions.reduce(reduceSessionsToHeaders, [])}
             style={styles.sessions}
             keyExtractor={({ id }) => id}
+            // onPress={() => navigation.push('Session')}
             renderItem={({ item: { id, title, location } }, i) => (
               <View style={styles.sessionContainer}>
                 <Text key={id} title={title} style={styles.individualSession}>
