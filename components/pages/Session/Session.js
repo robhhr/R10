@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, Text, View } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { Title, AboutText } from '../../Typography'
 import { Wrapper } from '../../index'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import ModalContainer from '../../Modal'
 
 const infoSession = id => {
   const SESSION = gql`
@@ -29,7 +31,13 @@ const infoSession = id => {
 }
 
 const Session = ({ navigation }) => {
+  const [toggle, setToggle] = useState(false)
+  const triggerToggle = () => {
+    setToggle(toggle === false)
+  }
+
   const { error, loading, data } = infoSession(navigation.getParam('id'))
+
   return (
     <Wrapper>
       {loading ? (
@@ -43,13 +51,23 @@ const Session = ({ navigation }) => {
           <Title>{data.startTime}</Title>
           <Title>{data.description}</Title>
           <AboutText>Presented by: </AboutText>
-          <View>
+          <TouchableOpacity onPress={triggerToggle}>
             <Image
               style={{ width: 100, height: 100, borderRadius: 50 }}
               source={{ uri: data.speaker.image }}
             />
-          </View>
-          <Title>{data.speaker.name}</Title>
+            <Title>{data.speaker.name}</Title>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <ModalContainer open={toggle} onClose={setToggle}>
+              <Image
+                style={{ width: 100, height: 100, borderRadius: 50 }}
+                source={{ uri: data.speaker.image }}
+              />
+              <Title>{data.speaker.name}</Title>
+              <Title>{data.speaker.bio}</Title>
+            </ModalContainer>
+          </TouchableOpacity>
         </>
       ) : null}
     </Wrapper>
