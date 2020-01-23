@@ -39,7 +39,7 @@ const Conference = ({ navigation, ...props }) => {
   }
 
   const { loading, error, data } = useQuery(EVENT_INFORMATION)
-
+  console.log(navigation)
   return (
     <>
       {loading ? (
@@ -82,7 +82,7 @@ const Schedule = ({ navigation }) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Conference />
+        <Conference navigation={navigation} />
       </ScrollView>
     </SafeAreaView>
   )

@@ -36,6 +36,8 @@ target 'R10' do
 
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
+  pod 'react-native-maps', :path => '../node_modules/react-native-maps'
+
   target 'R10Tests' do
     inherit! :search_paths
     # Pods for testing
