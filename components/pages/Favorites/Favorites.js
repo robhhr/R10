@@ -1,8 +1,10 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { Text, View, SectionList, TouchableOpacity } from 'react-native'
+import { Title } from '../../Typography'
+import { FavoriteButton } from '../../index'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
-import Wrapper from '../../index'
+import { Wrapper } from '../../index'
 
 const Favorites = () => {
   const SESSIONS = gql`
@@ -38,9 +40,39 @@ const Favorites = () => {
   const { loading, error, data } = useQuery(SESSIONS)
 
   return (
-    <Wrapper>
-      <Text>favorites</Text>
-    </Wrapper>
+    <>
+      {loading ? (
+        <Title>loading</Title>
+      ) : error ? (
+        <Title>error</Title>
+      ) : (
+        <View>
+          <SectionList
+            sections={data.allSessions.reduce(reduceSessionsToHeaders, [])}
+            keyExtractor={({ id }) => id}
+            renderItem={({ item: { id, title, location } }, i) => (
+              <View>
+                <TouchableOpacity
+                  onPress={() => navigation.push('Session', { id })}>
+                  <Text key={id} title={title}>
+                    {title}
+                  </Text>
+                </TouchableOpacity>
+                <View>
+                  <Text>{location}</Text>
+                  <FavoriteButton id={id} />
+                </View>
+              </View>
+            )}
+            renderSectionHeader={({ section: { title } }) => (
+              <View>
+                <Text>{title}</Text>
+              </View>
+            )}
+          />
+        </View>
+      )}
+    </>
   )
 }
 
