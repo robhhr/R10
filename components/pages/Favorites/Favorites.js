@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Text, View, SectionList, TouchableOpacity } from 'react-native'
 import { Title } from '../../Typography'
 import { FavoriteButton } from '../../index'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { Wrapper } from '../../index'
+import FavoritesContextProvider, {
+  FavoritesContext,
+} from '../../../context/favorites'
 
-const Favorites = () => {
+const Favorites = ({ navigation }) => {
   const SESSIONS = gql`
     {
       allSessions {
@@ -39,6 +42,8 @@ const Favorites = () => {
 
   const { loading, error, data } = useQuery(SESSIONS)
 
+  const { favorites } = useContext(FavoritesContext)
+
   return (
     <>
       {loading ? (
@@ -48,7 +53,9 @@ const Favorites = () => {
       ) : (
         <View>
           <SectionList
-            sections={data.allSessions.reduce(reduceSessionsToHeaders, [])}
+            sections={data.allSessions
+              .filter(({ id }) => favorites.includes(id))
+              .reduce(reduceSessionsToHeaders, [])}
             keyExtractor={({ id }) => id}
             renderItem={({ item: { id, title, location } }, i) => (
               <View>

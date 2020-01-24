@@ -53,7 +53,9 @@ const FavoritesContextProvider = ({ children, ...props }) => {
   }, [])
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavs, removeFavs }}>
+    <FavoritesContext.Provider
+      value={{ favorites, addFavs, removeFavs }}
+      {...props}>
       {children}
     </FavoritesContext.Provider>
   )
