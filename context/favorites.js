@@ -13,35 +13,37 @@ const FavoritesContextProvider = ({ children, ...props }) => {
 
   const getFavorites = async () => {
     try {
-      const res = await AsyncStorage.getItem('favorites')
-      setFavorites(JSON.parse(res))
+      const favorites = await AsyncStorage.getItem('favorites')
+      return JSON.parse(favorites) || []
     } catch (e) {
-      console.error('read blop')
+      console.error('getFavorites error')
     }
   }
 
   const addFavs = async id => {
-    if (!favorites.includes(id))
-      try {
-        const value = await AsyncStorage.setItem(
+    try {
+      if (!favorites.includes(id))
+        await AsyncStorage.setItem(
           'favorites',
           JSON.stringify([...favorites, id]),
         )
-        return value
-      } catch (e) {
-        console.error('add bloop')
-      }
+    } catch (e) {
+      console.error('addFavs error')
+    }
     favoritesList()
   }
 
   const removeFavs = async id => {
     try {
-      await AsyncStorage.removeItem(
-        'favorites',
-        JSON.stringify([...favorites, id]),
-      )
+      const i = favorites.indexOf(id)
+      if (i !== -1) {
+        const newFavs = [...favorites]
+        newFavs.splice(i, 1)
+
+        await AsyncStorage.setItem('favorites', JSON.stringify(newFavs))
+      }
     } catch (e) {
-      console.error('remove bloop')
+      console.error('removeFavs error')
     }
     favoritesList()
   }
