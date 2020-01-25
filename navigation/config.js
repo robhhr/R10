@@ -23,4 +23,5 @@ export const sharedNavigationOptions = navigation => ({
   headerStyle: {
     backgroundColor: 'transparent',
   },
+  headerTintColor: '#fff',
 })
