@@ -13,6 +13,14 @@ const styles = StyleSheet.create({
   sessionTime: {
     marginHorizontal: 15,
   },
+  androidSession: {
+    color: 'grey',
+    fontSize: 18,
+    marginHorizontal: 15,
+    marginTop: 15,
+    marginBottom: 5,
+    fontWeight: '700',
+  },
   individualSession: {
     backgroundColor: 'white',
     fontSize: 18,
@@ -27,6 +35,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginRight: 15,
     alignItems: 'baseline',
+  },
+  androidLocation: {
+    color: '#999999',
+    fontSize: 16,
+    fontWeight: '600',
+    marginHorizontal: 15,
+    marginBottom: 15,
   },
   location: {
     backgroundColor: 'white',
