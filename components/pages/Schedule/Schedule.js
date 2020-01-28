@@ -80,11 +80,13 @@ const Conference = ({ navigation, ...props }) => {
                 </View>
               </View>
             )}
-            renderSectionHeader={({ section: { title } }) => (
-              <View style={styles.time}>
-                <Text style={styles.sessionTime}>{title}</Text>
-              </View>
-            )}
+            renderSectionHeader={({ section: { title } }) => {
+              return (
+                <View style={styles.time}>
+                  <Text style={styles.sessionTime}>{title}</Text>
+                </View>
+              )
+            }}
           />
         </View>
       )}

@@ -8,6 +8,7 @@ import { Wrapper } from '../../index'
 import FavoritesContextProvider, {
   FavoritesContext,
 } from '../../../context/favorites'
+import styles from '../Schedule/Schedule.styles'
 
 const Favorites = ({ navigation }) => {
   const SESSIONS = gql`
@@ -51,29 +52,44 @@ const Favorites = ({ navigation }) => {
       ) : error ? (
         <Title>error</Title>
       ) : (
-        <View>
+        <View style={styles.mainContainer}>
           <SectionList
+            style={styles.sessions}
             sections={data.allSessions
               .filter(({ id }) => favorites.includes(id))
               .reduce(reduceSessionsToHeaders, [])}
             keyExtractor={({ id }) => id}
             renderItem={({ item: { id, title, location } }, i) => (
-              <View>
+              <View style={styles.sessionContainer}>
                 <TouchableOpacity
                   onPress={() => navigation.push('Session', { id })}>
-                  <Text key={id} title={title}>
+                  <Text
+                    key={id}
+                    title={title}
+                    style={
+                      Platform.OS === 'android'
+                        ? styles.androidSession
+                        : styles.individualSession
+                    }>
                     {title}
                   </Text>
                 </TouchableOpacity>
-                <View>
-                  <Text>{location}</Text>
+                <View style={styles.favoriteContainer}>
+                  <Text
+                    style={
+                      Platform.OS === 'android'
+                        ? styles.androidLocation
+                        : styles.location
+                    }>
+                    {location}
+                  </Text>
                   <FavoriteButton id={id} />
                 </View>
               </View>
             )}
             renderSectionHeader={({ section: { title } }) => (
-              <View>
-                <Text>{title}</Text>
+              <View style={styles.time}>
+                <Text style={styles.sessionTime}>{title}</Text>
               </View>
             )}
           />
