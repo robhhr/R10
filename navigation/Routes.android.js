@@ -1,10 +1,10 @@
 import React from 'react'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { About, Schedule, Favorites, Map, Session } from '../components/pages'
 import { sharedNavigationOptions } from './config'
 import Icon from 'react-native-vector-icons/Ionicons'
+import { createDrawerNavigator } from 'react-navigation-drawer'
 
 const HomeRoute = createStackNavigator(
   {
@@ -14,6 +14,7 @@ const HomeRoute = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation),
+      title: 'Schedule',
     }),
   },
 )
@@ -25,6 +26,7 @@ const AboutRoute = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation),
+      title: 'About',
     }),
   },
 )
@@ -36,6 +38,7 @@ const FavRoute = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation),
+      title: 'Faves',
     }),
   },
 )
@@ -47,22 +50,12 @@ const MapRoute = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation),
+      title: 'Schedule',
     }),
   },
 )
 
-const SessionRoute = createStackNavigator(
-  {
-    Session: Session,
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      ...sharedNavigationOptions(navigation),
-    }),
-  },
-)
-
-const BottomNavigation = createBottomTabNavigator(
+const DrawerNavigator = createDrawerNavigator(
   {
     Schedule: HomeRoute,
     Map: MapRoute,
@@ -71,13 +64,13 @@ const BottomNavigation = createBottomTabNavigator(
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ tintColor }) => {
+      drawerIcon: ({ tintColor }) => {
         const { routeName } = navigation.state
 
         if (routeName === 'Schedule') {
           return <Icon name="ios-calendar" color={tintColor} size={25} />
         } else if (routeName === 'Map') {
-          return <Icon name="ios-calendar" color={tintColor} size={25} />
+          return <Icon name="ios-map" color={tintColor} size={25} />
         } else if (routeName === 'Faves') {
           return <Icon name="ios-heart" color={tintColor} size={25} />
         } else if (routeName === 'About') {
@@ -96,4 +89,4 @@ const BottomNavigation = createBottomTabNavigator(
   },
 )
 
-export default createAppContainer(BottomNavigation)
+export default createAppContainer(DrawerNavigator)
