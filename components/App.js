@@ -3,6 +3,7 @@ import ApolloWrapper from '../apollo/Apollo'
 import Routes from '../navigation/Routes'
 import FavoritesContextProvider from '../context/favorites'
 import Navigation from '../navigation/Navigation'
+console.disableYellowBox = true
 
 const App = () => {
   return (
