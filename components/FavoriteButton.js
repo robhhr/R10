@@ -13,7 +13,7 @@ const FavoriteButton = ({ id, ...props }) => {
       }>
       <Icon
         name={
-          favorites && favorites.includes(id) ? 'ios-heart' : 'ios-heart-empty'
+          favorites && favorites.includes(id) ? 'md-heart' : 'md-heart-empty'
         }
         size={20}
       />
