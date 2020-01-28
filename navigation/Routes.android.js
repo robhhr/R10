@@ -50,7 +50,7 @@ const MapRoute = createStackNavigator(
   {
     defaultNavigationOptions: ({ navigation }) => ({
       ...sharedNavigationOptions(navigation),
-      title: 'Schedule',
+      title: 'Map',
     }),
   },
 )
