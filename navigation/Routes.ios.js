@@ -62,7 +62,7 @@ const SessionRoute = createStackNavigator(
   },
 )
 
-const BottomNavigation = createBottomTabNavigator(
+export default createBottomTabNavigator(
   {
     Schedule: HomeRoute,
     Map: MapRoute,
@@ -95,5 +95,3 @@ const BottomNavigation = createBottomTabNavigator(
     },
   },
 )
-
-export default createAppContainer(BottomNavigation)

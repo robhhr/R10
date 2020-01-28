@@ -55,7 +55,7 @@ const MapRoute = createStackNavigator(
   },
 )
 
-const DrawerNavigator = createDrawerNavigator(
+export default createDrawerNavigator(
   {
     Schedule: HomeRoute,
     Map: MapRoute,
@@ -68,14 +68,14 @@ const DrawerNavigator = createDrawerNavigator(
         const { routeName } = navigation.state
 
         if (routeName === 'Schedule') {
-          return <Icon name="ios-calendar" color={tintColor} size={25} />
+          return <Icon name="md-calendar" color={tintColor} size={25} />
         } else if (routeName === 'Map') {
-          return <Icon name="ios-map" color={tintColor} size={25} />
+          return <Icon name="md-map" color={tintColor} size={25} />
         } else if (routeName === 'Faves') {
-          return <Icon name="ios-heart" color={tintColor} size={25} />
+          return <Icon name="md-heart" color={tintColor} size={25} />
         } else if (routeName === 'About') {
           return (
-            <Icon name="ios-information-circle" color={tintColor} size={25} />
+            <Icon name="md-information-circle" color={tintColor} size={25} />
           )
         }
       },
@@ -88,5 +88,3 @@ const DrawerNavigator = createDrawerNavigator(
     },
   },
 )
-
-export default createAppContainer(DrawerNavigator)
