@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Image, Text, View } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
@@ -9,7 +9,8 @@ import {
   SessionText,
   AboutText,
 } from '../../Typography'
-import { FavoriteButton, Wrapper } from '../../index'
+import { Button, FavoriteButton, Wrapper } from '../../index'
+import { FavoritesContext } from '../../../context/favorites'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import ModalContainer from '../../Modal'
 import styles from './Session.styles'
@@ -45,6 +46,8 @@ const Session = ({ navigation, id }) => {
 
   const { error, loading, data } = infoSession(navigation.getParam('id'))
 
+  const { favorites, addFavs, removeFavs } = useContext(FavoritesContext)
+
   return (
     <Wrapper>
       {loading ? (
@@ -78,6 +81,7 @@ const Session = ({ navigation, id }) => {
               <Title>{data.speaker.bio}</Title>
             </ModalContainer>
           </TouchableOpacity>
+          <Button id={data.id} />
         </>
       ) : null}
     </Wrapper>
