@@ -3,9 +3,10 @@ import { Image, Text, View } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import { Title, AboutText } from '../../Typography'
-import { Wrapper } from '../../index'
+import { FavoriteButton, Wrapper } from '../../index'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import ModalContainer from '../../Modal'
+import styles from './Session.styles'
 
 const infoSession = id => {
   const SESSION = gql`
@@ -30,7 +31,7 @@ const infoSession = id => {
   return { data: data ? data.Session : null, loading, error }
 }
 
-const Session = ({ navigation }) => {
+const Session = ({ navigation, id }) => {
   const [toggle, setToggle] = useState(false)
   const triggerToggle = () => {
     setToggle(toggle === false)
@@ -46,7 +47,10 @@ const Session = ({ navigation }) => {
         <Title>error</Title>
       ) : data ? (
         <>
-          <Title>{data.location}</Title>
+          <View style={styles.favoriteContainer}>
+            <Text style={styles.location}>{data.location}</Text>
+            <FavoriteButton id={data.id} />
+          </View>
           <Title>{data.title}</Title>
           <Title>{data.startTime}</Title>
           <Title>{data.description}</Title>
