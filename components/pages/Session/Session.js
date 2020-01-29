@@ -71,7 +71,7 @@ const Session = ({ navigation, id }) => {
             />
             <Author>{data.speaker.name}</Author>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.buttonSeparator}>
             <ModalContainer open={toggle} onClose={setToggle}>
               <Image
                 style={{ width: 100, height: 100, borderRadius: 50 }}

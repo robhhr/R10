@@ -15,6 +15,11 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
   },
+  buttonSeparator: {
+    borderTopWidth: 2,
+    borderTopColor: '#e6e6e6',
+    marginTop: 30,
+  },
   time: {
     color: '#cf392a',
     fontSize: 16,

@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    marginVertical: 70,
+    marginVertical: 30,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
@@ -10,6 +10,8 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '75%',
+    borderTopWidth: 2,
+    borderTopColor: 'red',
     borderRadius: 50,
   },
   buttonText: {
