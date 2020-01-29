@@ -6,13 +6,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginVertical: 15,
+    marginTop: 25,
+    marginBottom: 10,
   },
   location: {
     backgroundColor: 'white',
     color: '#999999',
     fontWeight: '600',
     fontSize: 16,
+  },
+  time: {
+    color: '#cf392a',
+    fontSize: 16,
+    marginVertical: 15,
+    fontWeight: '400',
+  },
+  author: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 20,
   },
 })
 

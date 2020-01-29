@@ -1,6 +1,12 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+  author: {
+    fontSize: 20,
+    lineHeight: 35,
+    fontWeight: '400',
+    marginLeft: 20,
+  },
   title: {
     fontSize: 28,
   },
@@ -9,10 +15,20 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingVertical: 80,
   },
+  sessionTitle: {
+    fontSize: 28,
+    marginVertical: 5,
+  },
   aboutText: {
     fontSize: 20,
     marginVertical: 25,
     fontWeight: '300',
+  },
+  sessionText: {
+    fontSize: 20,
+    lineHeight: 35,
+    fontWeight: '400',
+    marginBottom: 40,
   },
   conduct: {
     fontSize: 20,
