@@ -1,19 +1,29 @@
 import React, { useState } from 'react'
-import { Modal, TouchableOpacity, ScrollView, View } from 'react-native'
+import {
+  Modal,
+  TouchableOpacity,
+  ScrollView,
+  Text,
+  View,
+  SafeAreaView,
+} from 'react-native'
 import Wrapper from './Wrapper'
 import { Title } from './Typography'
 
 const ModalContainer = ({ children, open = false, onClose, ...props }) => {
   return (
-    <Wrapper>
+    <View>
       <Modal visible={open} transparent={false} animationType="slide">
-        <Title>About the Speaker</Title>
-        <Title>{children}</Title>
-        <TouchableOpacity onPress={onClose}>
-          <Title>Hide Modal</Title>
-        </TouchableOpacity>
+        <SafeAreaView style={{ backgroundColor: 'black', height: '100%' }}>
+          <Text style={{ color: 'white' }}>About the Speaker</Text>
+          <View style={{ backgroundColor: 'white', marginHorizontal: 10 }}>
+            <Title>x</Title>
+            <Title>{children}</Title>
+            <TouchableOpacity onPress={onClose}></TouchableOpacity>
+          </View>
+        </SafeAreaView>
       </Modal>
-    </Wrapper>
+    </View>
   )
 }
 

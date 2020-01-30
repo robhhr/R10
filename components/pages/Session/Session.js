@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Image, Text, View } from 'react-native'
+import { Image, Text, View, StyleSheet } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import {
@@ -74,6 +74,7 @@ const Session = ({ navigation, id }) => {
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonSeparator}>
             <ModalContainer open={toggle} onClose={setToggle}>
+              {' '}
               <Image
                 style={{ width: 100, height: 100, borderRadius: 50 }}
                 source={{ uri: data.speaker.image }}
