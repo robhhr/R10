@@ -28,6 +28,7 @@ const infoSession = id => {
           name
           image
           id
+          bio
         }
       }
     }
