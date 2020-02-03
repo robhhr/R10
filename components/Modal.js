@@ -18,7 +18,7 @@ const ModalContainer = ({ children, open = false, onClose, ...props }) => {
           <SafeAreaView
             style={{
               backgroundColor: 'black',
-              height: '100%',
+              flex: 1,
             }}>
             <View
               style={{
