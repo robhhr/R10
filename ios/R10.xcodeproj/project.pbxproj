@@ -20,6 +20,8 @@
 		2EC824549D21BD234BC0D09C /* libPods-R10-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F20298F3ED7349E307AC3BF3 /* libPods-R10-tvOS.a */; };
 		3AAB52615AB4EC262F4A789C /* libPods-R10-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 020118FDEC3679262AB2C748 /* libPods-R10-tvOSTests.a */; };
 		CB6F817E0AE4589C3E8E71DD /* libPods-R10Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B11B02FA25B1290A69A2BAEB /* libPods-R10Tests.a */; };
+		FA9ED7A38F464D4895F4AD40 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B9D5349BEEA4A2BA6BC3A24 /* Montserrat-Light.ttf */; };
+		BAEF678EEE8D4E9CBB21B0C7 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C64DFA3C0FCF49F6B66EA6D1 /* Montserrat-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		F021F7111EBA9144B07A5FEA /* Pods-R10-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R10-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-R10-tvOSTests/Pods-R10-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F20298F3ED7349E307AC3BF3 /* libPods-R10-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-R10-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF005355EB2B1F16C04AD4C3 /* Pods-R10-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R10-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-R10-tvOSTests/Pods-R10-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		1B9D5349BEEA4A2BA6BC3A24 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; name = "Montserrat-Light.ttf"; path = "../assets/fonts/Montserrat-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C64DFA3C0FCF49F6B66EA6D1 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; name = "Montserrat-Regular.ttf"; path = "../assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +188,8 @@
 				D983F57572744AD5AED0855A /* Octicons.ttf */,
 				1E97A1911F3E45F8AEA9F234 /* SimpleLineIcons.ttf */,
 				40EA5D2F0FFD485890E7845A /* Zocial.ttf */,
+				1B9D5349BEEA4A2BA6BC3A24 /* Montserrat-Light.ttf */,
+				C64DFA3C0FCF49F6B66EA6D1 /* Montserrat-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -379,6 +385,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				FA9ED7A38F464D4895F4AD40 /* Montserrat-Light.ttf in Resources */,
+				BAEF678EEE8D4E9CBB21B0C7 /* Montserrat-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
