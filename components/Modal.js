@@ -56,7 +56,7 @@ const ModalContainer = ({ children, open = false, onClose, ...props }) => {
                 marginVertical: 35,
                 borderRadius: 5,
               }}>
-              <Title>{children}</Title>
+              {children}
             </View>
           </SafeAreaView>
         </Modal>

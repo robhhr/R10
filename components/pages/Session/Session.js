@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Image, Text, View, StyleSheet } from 'react-native'
+import { Image, Text, View, StyleSheet, Linking } from 'react-native'
 import { gql } from 'apollo-boost'
 import { useQuery } from '@apollo/react-hooks'
 import {
@@ -7,11 +7,13 @@ import {
   Title,
   SessionTitle,
   SessionText,
+  ModalTitle,
   AboutText,
 } from '../../Typography'
 import { Button, FavoriteButton, Wrapper } from '../../index'
 import { FavoritesContext } from '../../../context/favorites'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import LinearGradient from 'react-native-linear-gradient'
 import ModalContainer from '../../Modal'
 import styles from './Session.styles'
 
@@ -29,6 +31,7 @@ const infoSession = id => {
           image
           id
           bio
+          url
         }
       }
     }
@@ -74,13 +77,43 @@ const Session = ({ navigation, id }) => {
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonSeparator}>
             <ModalContainer open={toggle} onClose={setToggle}>
-              {' '}
               <Image
-                style={{ width: 100, height: 100, borderRadius: 50 }}
+                style={{
+                  width: 150,
+                  height: 150,
+                  borderRadius: 80,
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  marginVertical: 20,
+                }}
                 source={{ uri: data.speaker.image }}
               />
-              <Title>{data.speaker.name}</Title>
-              <Title>{data.speaker.bio}</Title>
+              <ModalTitle>{data.speaker.name}</ModalTitle>
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 22,
+                  lineHeight: 35,
+                  marginBottom: 10,
+                }}>
+                {data.speaker.bio}
+              </Text>
+              <TouchableOpacity style={styles.buttonSeparator}>
+                <View style={styles.buttonContainer}>
+                  <LinearGradient
+                    colors={['#9963ea', '#8797D6']}
+                    start={{ x: 0.0, y: 1.0 }}
+                    end={{ x: 1.0, y: 0.0 }}
+                    style={styles.button}>
+                    <TouchableOpacity
+                      onPress={() => Linking.openURL(data.speaker.url)}>
+                      <Text style={styles.buttonText}>
+                        Read More on Wikipedia
+                      </Text>
+                    </TouchableOpacity>
+                  </LinearGradient>
+                </View>
+              </TouchableOpacity>
             </ModalContainer>
           </TouchableOpacity>
           <Button id={data.id} />

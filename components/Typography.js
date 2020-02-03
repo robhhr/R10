@@ -13,6 +13,10 @@ const SessionTitle = ({ children }) => {
   return <Text style={styles.sessionTitle}>{children}</Text>
 }
 
+const ModalTitle = ({ children }) => {
+  return <Text style={styles.modalTitle}>{children}</Text>
+}
+
 const PageTitle = ({ children }) => {
   return <Text style={styles.pageTitle}>{children}</Text>
 }
@@ -35,6 +39,7 @@ const REDFooter = ({ children }) => {
 
 export {
   Author,
+  ModalTitle,
   Title,
   PageTitle,
   SessionTitle,

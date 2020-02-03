@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     fontSize: 28,
     marginVertical: 5,
   },
+  modalTitle: {
+    fontSize: 28,
+    marginBottom: 30,
+    textAlign: 'center',
+  },
   aboutText: {
     fontSize: 20,
     marginVertical: 25,
