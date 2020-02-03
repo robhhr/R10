@@ -65,7 +65,12 @@ const Session = ({ navigation, id }) => {
             <FavoriteButton id={data.id} />
           </View>
           <SessionTitle>{data.title}</SessionTitle>
-          <Text style={styles.time}>{data.startTime}</Text>
+          <Text style={styles.time}>
+            {new Date(data.startTime).toLocaleString('en-US', {
+              hour: 'numeric',
+              hour12: true,
+            })}
+          </Text>
           <SessionText>{data.description}</SessionText>
           <Text style={styles.location}>Presented by: </Text>
           <TouchableOpacity style={styles.author} onPress={triggerToggle}>

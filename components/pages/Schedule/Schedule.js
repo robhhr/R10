@@ -83,7 +83,12 @@ const Conference = ({ navigation, ...props }) => {
             renderSectionHeader={({ section: { title } }) => {
               return (
                 <View style={styles.time}>
-                  <Text style={styles.sessionTime}>{title}</Text>
+                  <Text style={styles.sessionTime}>
+                    {new Date(title).toLocaleString('en-US', {
+                      hour: 'numeric',
+                      hour12: true,
+                    })}
+                  </Text>
                 </View>
               )
             }}
