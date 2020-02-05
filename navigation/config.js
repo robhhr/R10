@@ -4,15 +4,24 @@ import { Header } from 'react-navigation-stack'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-const Drawer = ({ navigation }) => (
-  <Icon
-    name="md-menu"
-    size={25}
-    color="#fff"
-    onPress={navigation.openDrawer}
-    style={{ marginLeft: 10 }}
-  />
-)
+const Drawer = ({ navigation }) =>
+  navigation.isFirstRouteInParent() ? (
+    <Icon
+      name="md-menu"
+      size={25}
+      color="#fff"
+      onPress={navigation.openDrawer}
+      style={{ marginLeft: 10 }}
+    />
+  ) : (
+    <Icon
+      name="md-arrow-back"
+      size={25}
+      color="#fff"
+      onPress={() => navigation.goBack()}
+      style={{ marginLeft: 10 }}
+    />
+  )
 
 const GradientHeader = props => {
   return (
