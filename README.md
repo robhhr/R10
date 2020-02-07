@@ -1,3 +1,3 @@
-### R10
+# R10
 
-## iOS/Android application built w/ React Native
+### iOS/Android application built w/ React Native
